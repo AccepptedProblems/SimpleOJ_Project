@@ -4,3 +4,4 @@
 server/account/__pycache__
 server/onlinejudge/__pycache__
 server/server/__pycache__
+*.pyc
