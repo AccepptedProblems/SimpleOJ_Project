@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  --app-color: #1bafc3;
+  --darker-app-color: #197b88;
+  --line-color: #c5c5c5;
+  --link-color: #149ce9;
+  --border-radius: 7px;
+}
+
+* {
+  font-family: "Roboto";
+  font-size: 15px;
+}
+
+html,
+#root,
+body,
+.App,
+.application,
+.main-page {
+  height: 100%;
+}
+
+body {
+  padding: 0 20px;
+}
+
+// Table styling
+table {
+  margin: 1px;
+  width: 100%;
+  border-radius: 7px !important;
+}
+
+table,
+th,
+td {
+  border: 0.5px solid rgba($color: #adadad, $alpha: 0.5);
+}
+
+thead {
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+//Text styling
+.text-padding-left-10px {
+  padding: 0 10px;
+}
+
+.text-center {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+}
+
+//button styling
+.btn-padding-20 {
+  padding: 5px 20px;
+  color: white;
+  background-color: var(--app-color);
+  text-align: center;
+  border-radius: 7px;
+  user-select: none;
+}
+
+.btn-padding-20:hover {
+  cursor: pointer;
+  background-color: var(--darker-app-color);
+}
+
+.btn-padding-10 {
+  padding: 5px 10px;
+  color: white;
+  background-color: var(--app-color);
+  text-align: center;
+  border-radius: 7px;
+  user-select: none;
+}
+
+.btn-padding-10:hover {
+  cursor: pointer;
+  background-color: var(--darker-app-color);
+}

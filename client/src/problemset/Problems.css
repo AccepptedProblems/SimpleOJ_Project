@@ -1,0 +1,68 @@
+@import url(../App.css);
+:root {
+  --table-border-color: #adadad
+;
+}
+
+.title {
+  font-size: 1.42em;
+  font-weight: 600;
+  margin: 20px 0 10px 0;
+}
+
+tr {
+  height: 30px;
+}
+
+.problem-table {
+  border-radius: 7px;
+}
+
+.problem-table thead th:nth-child(2) {
+  width: 70px;
+}
+
+.problem-table thead th:nth-child(3) {
+  width: 70px;
+}
+
+.problem-table thead th:nth-child(4) {
+  width: 60px;
+}
+
+.problem-table td {
+  text-overflow: ellipsis;
+}
+
+.zebra-stripping tbody tr:nth-child(even) {
+  background-color: rgba(27, 175, 195, 0.15);
+}
+
+.top-ranking-table thead th:nth-child(1) {
+  width: 41px;
+}
+
+.top-ranking-table thead th:nth-child(3) {
+  width: 60px;
+}
+
+.top-ranking-table tbody tr td {
+  text-overflow: ellipsis;
+}
+
+.problem-linking {
+  display: inline;
+  color: var(--app-color);
+  text-decoration: underline;
+}
+
+.problem-linking:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .top-ranking-table {
+    display: none;
+  }
+}
+/*# sourceMappingURL=Problems.css.map */

@@ -1,0 +1,22 @@
+endpoint:
+
+Problem:
+GET /problems/list => [Problem]
+GET /problem?id => Problem 
+POST /prolem (Problem) (Upload Problems)
+
+Submission:
+    List submission
+        GET /submission/list
+            param: userId, problemId (không bắt buộc)
+            accessToken: 
+    Submit a submission:
+        POST /submission (Submission)
+
+Ranking:
+GET ranking/
+
+User:
+GET /user/login
+POST /user (User)
+
