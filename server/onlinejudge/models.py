@@ -58,7 +58,7 @@ class Submission(models.Model):
 
 class RecordManager(models.Manager):
     def get_record_from_user(self, user):
-        records = list(self.filter(user=user).first())
+        records = list(self.filter(user=user))
         return records
     
     def refresh_record(self):

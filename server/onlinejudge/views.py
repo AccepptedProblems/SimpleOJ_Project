@@ -77,7 +77,7 @@ def ranking(request):
         'data': [],
     }
     if request.method == 'GET':
-        users = Account.object.filter(is_active=True)
+        users = Account.object.filter(is_active=True, is_admin=False)
         for user in users:
             records = Record.object.get_record_from_user(user)
             totalPoint = 0
