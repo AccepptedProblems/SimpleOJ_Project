@@ -9,7 +9,6 @@ from account.models import Account
 # Create your views here.
 
 
-
 @csrf_exempt
 def problems(request):
     listData = {
@@ -20,7 +19,8 @@ def problems(request):
     if request.method == 'GET':
         userId = request.GET.get('user_id')
         if not userId is None:
-            problems = list(Problem.object.all().values('id', 'creator', 'problem_title', 'problem_content', 'max_score', 'time_limit', 'memory_limit'))
+            problems = list(Problem.object.all().values(
+                'id', 'creator', 'problem_title', 'problem_content', 'max_score', 'time_limit', 'memory_limit'))
 
             listData['data'] = problems
             return JsonResponse(listData)
@@ -45,12 +45,12 @@ def createProblems(request):
         creator = Account.object.filter(id=creatorId).first()
         if not creator is None:
             new_problem = Problem.object.create_problem(title=title,
-                                                         name = name_in_themis,
-                                                         creator=creator,
-                                                         content=content,
-                                                         max_score=max_point,
-                                                         time_limit=time_limit,
-                                                         memory_limit=mem_limit)
+                                                        name=name_in_themis,
+                                                        creator=creator,
+                                                        content=content,
+                                                        max_score=max_point,
+                                                        time_limit=time_limit,
+                                                        memory_limit=mem_limit)
             if new_problem is None:
                 return JsonResponse({'message': 'There\'s some field empty! Let\'s check again'})
 
@@ -69,6 +69,7 @@ def createProblems(request):
     else:
         return JsonResponse({'message': 'Invalid request!!!'})
 
+
 def ranking(request):
     response = {
         'code': 1,
@@ -76,24 +77,25 @@ def ranking(request):
         'data': [],
     }
     if request.method == 'GET':
-        users = Account.object.filter(is_active=True) 
+        users = Account.object.filter(is_active=True)
         for user in users:
             records = Record.object.get_record_from_user(user)
-            totalPoint = 0 
+            totalPoint = 0
             for record in records:
                 totalPoint += record.user_point
             data = {
                 'user_id': user.id,
-                'name': user.fullname, 
+                'name': user.fullname,
                 'point': totalPoint
             }
             response['data'].append(data)
-        
-    
-    return JsonResponse()
+        return JsonResponse(response)
+    else:
+        return JsonResponse()
+
 
 def submit_problems(request):
     if request.method == 'POST':
-        
+
         return JsonResponse()
     return JsonResponse()
