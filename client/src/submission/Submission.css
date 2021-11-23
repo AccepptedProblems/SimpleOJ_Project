@@ -1,0 +1,25 @@
+@import url(../App.css);
+.submission-table {
+  font-size: 1rem;
+}
+
+.submission-table thead th:nth-child(1) {
+  width: 210px;
+}
+
+.submission-table thead th:nth-child(3) {
+  width: 90px;
+}
+
+.submission-table thead th:nth-child(4) {
+  width: 60px;
+}
+
+.submission-table thead th:nth-child(5) {
+  width: 90px;
+}
+
+.submission-table thead th:nth-child(6) {
+  width: 100px;
+}
+/*# sourceMappingURL=Submission.css.map */

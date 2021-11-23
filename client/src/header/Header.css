@@ -1,0 +1,100 @@
+@import url("../App.css");
+.header {
+  border-bottom: 1px solid var(--line-color);
+  height: 70px;
+}
+
+.header .main-nav {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .main-nav .page_bar {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .main-nav .page_bar .homepage {
+  display: inline-block;
+  width: 180px;
+  color: black;
+  font-size: 1.7em;
+  font-weight: 900;
+  vertical-align: middle;
+  margin: 0 10px 0 0;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.header .main-nav .page_bar .homepage:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header .main-nav .page_bar .nav_item {
+  padding: calc((75px - 25.2px)/2) 0;
+  height: 100%;
+  text-align: center;
+  margin: 0 10px;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.header .main-nav .page_bar .nav_item a {
+  font-size: 1.1rem;
+  display: inline-block;
+  color: black;
+}
+
+.header .main-nav .page_bar .nav_item a:hover {
+  text-decoration: none;
+  color: var(--app-color);
+  cursor: pointer;
+}
+
+.header .main-nav .page_bar .chosen-item {
+  border-bottom: 4px solid var(--app-color);
+}
+
+.header .main-nav .page_bar .chosen-item a {
+  color: #1BAFC3;
+}
+
+.header .main-nav .user_option {
+  display: inline-block;
+  color: var(--app-color);
+}
+/*# sourceMappingURL=Header.css.map */
