@@ -29,7 +29,6 @@ class ProblemManager(models.Manager):
             memory_limit=memory_limit
         )
         problem.save()
-        Record.object.refresh_record()
         return problem
 
 
@@ -46,12 +45,37 @@ class Problem(models.Model):
     object = ProblemManager()
 
 # Submission Model and manager
-
+class SubmissionManager(models.Manager):
+    def create_submission(self, problem_id, user_id, lang, solution, *args, **kwargs):
+        problem = Problem.object.filter(id=problem_id).first()
+        user = Account.object.filter(id=user_id).first()
+        if problem is None or user is None or solution is None:
+            return None
+        
+        submission =self.model(
+            problem=problem,
+            user=user,
+            user_point=0,
+            language= lang, 
+            solution=solution,
+            time=0,
+            memory=0,
+        )
+        
+        submission.save()
+        return submission
+        
 
 class Submission(models.Model):
     problem = models.ForeignKey(Problem, on_delete=CASCADE)
     user = models.ForeignKey(Account, on_delete=CASCADE)
     user_point = models.IntegerField()
+    solution = models.TextField(default='')
+    language = models.CharField(max_length=100, default="")
+    time = models.FloatField(default=0.0)
+    memory = models.FloatField(default=0.0)
+    
+    object = SubmissionManager()
 
 # Record Model and manager
 
@@ -62,13 +86,13 @@ class RecordManager(models.Manager):
         return records
     
     def refresh_record(self):
-        users = Account.object.filter(is_active=True)
+        users = Account.object.filter(is_active=True, is_admin=False)
         problems = Problem.object.all()
         for user in users:
             for problem in problems:
-                record = self.filter(user=user, problem=problem)
+                record = self.filter(user=user, problem=problem).first()
                 if record is None:
-                    self.create(problem=problem, user=user)
+                    self.create_record(problem=problem, user=user, point=0)
 
     def create_record(self, problem, user, point):
         if (problem is None) or (user is None) or (point is None):

@@ -3,6 +3,10 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 class AccountManager(BaseUserManager):
+    def activate_user(self, user):
+        user.is_active = True
+        user.save()
+        return user
     
     def create_user(self, email, username, fullname, password=None):
         if not email:

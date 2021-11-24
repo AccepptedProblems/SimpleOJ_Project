@@ -5,3 +5,7 @@ server/account/__pycache__
 server/onlinejudge/__pycache__
 server/server/__pycache__
 *.pyc
+contest/Contestants/7/001.cpp
+contest/Contestants/Logs/10\[7\]\[001\].cpp.log
+server/onlinejudge/migrations/0008_auto_20211124_1122.py
+server/onlinejudge/migrations/0009_auto_20211124_1537.py
