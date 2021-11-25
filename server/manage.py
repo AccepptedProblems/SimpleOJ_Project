@@ -3,6 +3,7 @@
 import os
 import sys
 
+from watchdog.observers import Observer
 
 def main():
     """Run administrative tasks."""
@@ -15,8 +16,14 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    turnon_file_change_notify()
     execute_from_command_line(sys.argv)
 
+def turnon_file_change_notify():
+    event_handler = FileChangeHandler()
+    observer = Observer()
+    observer.schedule(event_handler, path='.\\contest\\Contestants\\Logs', recursive=False)
+    observer.start()
 
 if __name__ == '__main__':
     main()
