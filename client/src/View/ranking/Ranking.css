@@ -1,0 +1,9 @@
+@import url(../../App.css);
+.ranking-table thead th:nth-child(1) {
+  width: 50px;
+}
+
+.ranking-table thead th:nth-child(3) {
+  width: 15%;
+}
+/*# sourceMappingURL=Ranking.css.map */

@@ -1,0 +1,79 @@
+@import url(../../../App.css);
+
+.edit-problem {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .RichEditor-root {
+    height: 100%;
+    border: 0.5px solid var(--line-color);
+    border-radius: var(--border-radius);
+  }
+
+  input {
+    height: 30px;
+    border: 0.5px solid var(--line-color);
+    border-radius: 7px;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input:focus {
+    outline-color: var(--line-color);
+    outline-width: 1px;
+  }
+
+  .problem-title-input {
+    width: 100%;
+    margin: 0.3em 0 0.6em 0;
+  }
+
+  .edit-problem-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .timelimit-input {
+    margin-left: 15px;
+    width: 3em;
+  }
+
+  .memlimit-input {
+    margin-left: 15px;
+    width: 6em;
+  }
+
+  .decs-for-input {
+    font-weight: 600;
+  }
+
+  .edit-problem-action-bar {
+    display: flex;
+    justify-content: end;
+
+    .cancel-edit-button {
+      margin: 10px;
+      padding: 5px 10px;
+      border: 0.5px solid var(--line-color);
+      border-radius: 7px;
+    }
+
+    .apply-edit-button {
+      margin: 10px;
+      padding: 5px 10px;
+      color: white;
+      background-color: var(--app-color);
+      border-radius: 7px;
+    }
+
+    .apply-edit-button:hover, .cancel-edit-button:hover {
+      cursor: pointer;
+    }
+  }
+}

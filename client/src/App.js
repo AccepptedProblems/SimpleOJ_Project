@@ -3,12 +3,12 @@ import { Route, Routes } from "react-router";
 
 import "./bootstrap-4.0.0-dist/css/bootstrap.min.css";
 import "./App.css";
-import SubmitProblem from './problem/submit/SubmitProblem';
-import ProblemDetail from './problem/read/ProblemDetail';
-import CreateProblem from './problem/create/CreateProblem';
-import Problems from './problemset/Problems';
-import Ranking from './ranking/Ranking';
-import Submission from './submission/Submission';
+import SubmitProblem from './View/problem/submit/SubmitProblem';
+import ProblemDetail from './View/problem/read/ProblemDetail';
+import CreateProblem from './View/problem/create/CreateProblem';
+import Problems from './View/problemset/Problems';
+import Ranking from './View/ranking/Ranking';
+import Submission from './View/submission/Submission';
 
 function App() {
   return (
