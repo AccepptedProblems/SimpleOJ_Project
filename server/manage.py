@@ -4,6 +4,7 @@ import os
 import sys
 
 from watchdog.observers import Observer
+from real_time_notification.notify import FileChangeHandler
 
 def main():
     """Run administrative tasks."""
@@ -22,7 +23,7 @@ def main():
 def turnon_file_change_notify():
     event_handler = FileChangeHandler()
     observer = Observer()
-    observer.schedule(event_handler, path='.\\contest\\Contestants\\Logs', recursive=False)
+    observer.schedule(event_handler, path='..\\contest\\Submissions\\Logs', recursive=False)
     observer.start()
 
 if __name__ == '__main__':

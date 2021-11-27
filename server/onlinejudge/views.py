@@ -9,20 +9,22 @@ from onlinejudge.themis_backend import ThemisBackend
 
 # Create your views here.
 
+
 def user_logged_in(request):
     if request.method == 'POST':
         user_id = request.POST.get('user_id')
         sender = Account.object.filter(id=user_id).first()
         if sender is None or (not sender.is_authenticated):
-            return False 
+            return False
         return True
     elif request.method == 'GET':
         user_id = request.GET.get('user_id')
         sender = Account.object.filter(id=user_id).first()
         if sender is None or (not sender.is_authenticated):
-            return False 
+            return False
         return True
     return False
+
 
 @csrf_exempt
 def problems(request):
@@ -31,13 +33,12 @@ def problems(request):
         'message': 'Success',
         'data': [],
     }
-    
+
     if not user_logged_in(request):
         response['code'] = 0
         response['message'] = 'Unauthorize!!!'
         return JsonResponse(response)
-    
-    
+
     if request.method == 'GET':
         Record.object.refresh_record()
         userId = request.GET.get('user_id')
@@ -47,13 +48,16 @@ def problems(request):
             records = Record.object.get_record_from_user(user)
             for record in records:
                 problem = record.problem
+
+                creator = {
+                    'id': problem.creator.id,
+                    'username': problem.creator.username,
+                    'fullname': problem.creator.fullname,
+                }
+
                 data = {
                     'id': problem.id,
-                    'creator': {
-                        'id': problem.creator.id,
-                        'username': problem.creator.username,
-                        'fullname': problem.creator.fullname,
-                    },
+                    'creator': creator,
                     'title': problem.problem_title,
                     'themis_name': problem.name_in_themis,
                     'max_point': problem.max_score,
@@ -75,14 +79,14 @@ def createProblems(request):
     response = {
         'code': 1,
         'message': 'Success',
-        'data' : {},
+        'data': {},
     }
-    
+
     if not user_logged_in(request):
         response['code'] = 0
         response['message'] = 'Unauthorize!!!'
         return JsonResponse(response)
-    
+
     if request.method == 'POST':
         creatorId = request.POST.get('user_id')
         title = request.POST.get('title')
@@ -125,12 +129,12 @@ def ranking(request):
         'message': 'Success!',
         'data': [],
     }
-    
+
     if not user_logged_in(request):
         response['code'] = 0
         response['message'] = 'Unauthorize!!!'
         return JsonResponse(response)
-    
+
     if request.method == 'GET':
         users = Account.object.filter(is_active=True, is_admin=False)
         for user in users:
@@ -149,6 +153,7 @@ def ranking(request):
     else:
         return JsonResponse()
 
+
 @csrf_exempt
 def submit_problems(request):
     response = {
@@ -160,22 +165,44 @@ def submit_problems(request):
         response['code'] = 0
         response['message'] = 'Unauthorize!!!'
         return JsonResponse(response)
-    
+
     if request.method == 'POST':
-        #parameter
+        # parameter
         problem_id = request.POST.get('problem_id')
         user_id = request.POST.get('user_id')
         language = request.POST.get('lang')
         solution = request.POST.get('solution')
-        
-        submission = Submission.object.create_submission(problem_id, user_id, language, solution)
-        
+
+        submission = Submission.object.create_submission(
+            problem_id, user_id, language, solution)
+
         if submission is None:
             response['code'] = 0
             response['message'] = 'There\'s some field missing'
             return JsonResponse(response)
-        
-        #give for themis backend to submit and get result 
+
+        # give for themis backend to submit and get result
         ThemisBackend.submit_problem(ThemisBackend, submission)
-        return JsonResponse({'message':"Success"})
-    return JsonResponse()
+        return JsonResponse({'message': "Success"})
+    
+    response['code'] = 0
+    response['message'] = 'Invalid request!'
+    return JsonResponse(response)
+        
+@csrf_exempt
+def get_list_submission(request):
+    response = {
+        'code': 1,
+        'message': 'Success!',
+        'data': [],
+    }
+    if not user_logged_in(request):
+        response['code'] = 0
+        response['message'] = 'Unauthorize!!!'
+        return JsonResponse(response)
+    
+    if request.method == 'GET':
+        submissions = list(Submission.object.all().values())
+        response['data'] = submissions
+        
+        return JsonResponse(response)

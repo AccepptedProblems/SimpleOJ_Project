@@ -8,11 +8,16 @@ POST /prolem (Problem) (Upload Problems)
 Submission:
     List submission
         GET /submission/list
-            param: userId, problemId (không bắt buộc)
-            accessToken: 
+            param: 
+		userId
+		problem_id (không bắt buộc)
     Submit a submission:
-        POST /submission (Submission)
-
+        POST /submit (Submission)
+	    body:
+		problem_id
+		content (code)
+		lang (language)
+		
 Ranking:
 GET ranking/
 
