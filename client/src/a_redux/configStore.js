@@ -1,9 +1,9 @@
 import {combineReducers, createStore} from 'redux';
-import user from './duck/user';
+import userReducer from './duck/user';
 import activepage from './duck/activepage';
 
 const reducer = combineReducers({
-    userInfo: user,
+    userInfo: userReducer,
     activePage: activepage,
 });
 

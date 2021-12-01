@@ -10,6 +10,9 @@
 
 .problem-detail .content .other {
   width: 210px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 12px 15px;
   border: 0.5px solid var(--app-color);
   border-radius: var(--border-radius);

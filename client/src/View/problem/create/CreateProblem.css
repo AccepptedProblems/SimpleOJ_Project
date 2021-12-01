@@ -58,6 +58,16 @@
   width: 6em;
 }
 
+.edit-problem .name-input {
+  margin-left: 15px;
+  width: 7rem;
+}
+
+.edit-problem .point-input {
+  margin-left: 15px;
+  width: 4rem;
+}
+
 .edit-problem .decs-for-input {
   font-weight: 600;
 }

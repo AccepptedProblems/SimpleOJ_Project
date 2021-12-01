@@ -4,6 +4,8 @@ const initialState = {
     RANKING: "ranking"
 };
 
-export default (state = initialState, action) => {
+const activePage = (state = initialState, action) => {
     return initialState;
 };
+
+export default activePage

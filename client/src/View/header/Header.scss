@@ -75,6 +75,19 @@
         .user_option {
             display: inline-block;
             color: var(--app-color);
+            
+        }
+        
+        .user_option:hover {
+            cursor: pointer;
+            color: var(--app-color);
+            text-decoration: underline;
+        }
+
+        .back_slash{
+            display: inline;
+            color: var(--app-color);
+            margin: 0 4px;
         }
         
     }

@@ -97,4 +97,16 @@
   display: inline-block;
   color: var(--app-color);
 }
+
+.header .main-nav .user_option:hover {
+  cursor: pointer;
+  color: var(--app-color);
+  text-decoration: underline;
+}
+
+.header .main-nav .back_slash {
+  display: inline;
+  color: var(--app-color);
+  margin: 0 4px;
+}
 /*# sourceMappingURL=Header.css.map */

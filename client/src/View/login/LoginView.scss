@@ -1,0 +1,58 @@
+@import url(../../App.css);
+
+.login-page {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login-box {
+    height: 230px;
+    width: 300px;
+    border: 1px solid var(--line-color);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(139, 139, 139, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+
+    .Title {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 10px 0 10px 0;
+    }
+
+    .input-field {
+      margin: 5px 0;
+      padding: 0 10px;
+      width: 90%;
+      font-size: 0.9rem;
+      line-height: 28px;
+      border: 0.5px solid var(--line-color);
+      border-radius: 7px;
+    }
+
+    .login-btn {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .user-login-option{
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+
+      .login-option{
+        font-size: 0.9em;
+        text-decoration: underline;
+        color: var(--app-color);
+      }
+
+      .login-option:hover {
+        cursor: pointer;
+      }
+    }
+
+  }
+}

@@ -6,18 +6,28 @@ export const setUserInfo = (userInfo) => ({
 });
 
 const initialState = {
-    username: "", 
     accessToken: "",
+    id: 0,
+    username: "", 
     fullname: "Nguyen Thanh Nam", 
-    isAdmin: "",
+    isAdmin: false,
 };
 
-export default (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case SETINFO:
-            return action.userInfo;
+            Object.assign(state,action.userInfo);
+            return {
+                ...state,
+                id: action.userInfo.id,
+                username: action.userInfo.username,
+                fullname: action.userInfo.fullname,
+                isAdmin: action.userInfo.is_admin,
+            }
         default:
             return state;
     }
 };
+
+export default userReducer
 

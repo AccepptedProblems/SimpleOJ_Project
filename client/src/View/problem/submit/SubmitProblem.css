@@ -33,6 +33,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .submit-problem-page .options .choose-language {
