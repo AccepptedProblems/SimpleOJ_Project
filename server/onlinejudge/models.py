@@ -1,21 +1,25 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from account.models import Account
-from django.db import transaction, DatabaseError
 from django import db
 # Create your models here.
 
 # Problem model and manager
 
+def checkNone(value):
+    return value is None or value == ''
 
 class ProblemManager(models.Manager):
+    def save(problem):
+        problem.save()
+    
     def create_problem(self, title, name, creator, content, max_score, time_limit, memory_limit, *args, **kwargs):
-        if title is None:
-            return None
-        if content is None:
-            return None
-        if name is None or not self.filter(name_in_themis=name).first() is None:
-            return ValueError("Missing name or ")
+        if checkNone(title):
+            return "Missing title!!!"
+        if checkNone(content):
+            return "Missing content!!!"
+        if checkNone(name) or not self.filter(name_in_themis=name).first() is None:
+            return "Missing name or name existed!!!"
         
         problem = self.model(
             creator=creator,
@@ -26,7 +30,6 @@ class ProblemManager(models.Manager):
             time_limit=time_limit,
             memory_limit=memory_limit
         )
-        problem.save()
         return problem
 
 
@@ -46,20 +49,26 @@ class Problem(models.Model):
 
 
 class SubmissionManager(models.Manager):
+    LANGUGAGE_OPTIONS = [
+        'C++',
+        'Java',
+        'Python',
+    ]
 
     def create_submission(self, problem_id, user_id, lang, solution, *args, **kwargs):
         problem = Problem.object.filter(id=problem_id).first()
-        db.connections.close_all()
         user = Account.object.filter(id=user_id).first()
-        db.connections.close_all()
         
-        if problem is None or user is None or solution is None:
-            return None
+        if checkNone(problem) or checkNone(user) or checkNone(solution):
+            return 'There\'s some field missing'
 
+        if not lang in self.LANGUGAGE_OPTIONS:
+            return 'Not exist this language'
+        
         submission = self.model(
             problem=problem,
             user=user,
-            user_point=0,
+            user_point='Pending',
             language=lang,
             solution=solution,
             time=0,
@@ -90,7 +99,7 @@ class RecordManager(models.Manager):
         return records
 
     def refresh_record(self):
-        users = Account.object.filter(is_active=True, is_admin=False)
+        users = Account.object.filter(is_active=True)
         problems = Problem.object.all()
         for user in users:
             for problem in problems:

@@ -46,7 +46,7 @@ def get_submission_id_from_last_submit(user_id, problem_name):
     cursor.execute(query)
     
     data = cursor.fetchall() #Get last submission 
-    result = data[-1]
+    result = data[-1][0]
     cursor.close()
     mydb.close()
     return result
@@ -59,16 +59,16 @@ def update_submission(user_id, problem_name, result):
         user=USERNAME,
         password=PASSWORD,
     )
-    submission_id = get_submission_id_from_last_submit(user_id, problem_name)
+    submission_id = str(get_submission_id_from_last_submit(user_id, problem_name))
 
     if submission_id is None:
         return
 
     query = """ 
-    UPDATE `%s`
-    SET user_point = `%s`
-    WHERE id = `%s`;
-    """ % (table_name, result, submission_id)
+    UPDATE simple_oj.onlinejudge_submission
+    SET user_point = '%s'
+    WHERE id = %s;
+    """ % (result, submission_id)
     
     cursor = mydb.cursor()
     cursor.execute(query)
@@ -76,4 +76,4 @@ def update_submission(user_id, problem_name, result):
     
     cursor.close()
     mydb.close()
-    print(query)
+   

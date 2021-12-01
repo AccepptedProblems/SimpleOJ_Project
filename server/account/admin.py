@@ -4,7 +4,7 @@ from account.models import Account
 
 # Register your models here.
 class AccountAdmin(UserAdmin):
-    list_display = ('email', 'username', 'is_admin', 'last_login')
+    list_display = ('email', 'username', 'is_admin', 'fullname')
     search_fields = ('email', 'username', 'id')
     readonly_fields = ('id', 'last_login')
 
@@ -13,5 +13,4 @@ class AccountAdmin(UserAdmin):
     fieldset = ()
     
     
-
 admin.site.register(Account, AccountAdmin)
