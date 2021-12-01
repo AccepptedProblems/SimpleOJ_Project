@@ -83,7 +83,6 @@ def problems(request):
             records = Record.object.get_record_from_user(user)
             for record in records:
                 data = getProblemDataFromRecord(record=record)
-
                 response['data'].append(data)
             return JsonResponse(response)
         else:
@@ -239,8 +238,7 @@ def getSubmissionData(submissions):
         }
 
         data.append(submitData)
-
-    return data
+    return data[::-1]
 
 
 @csrf_exempt
