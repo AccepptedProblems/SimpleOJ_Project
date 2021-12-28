@@ -1,0 +1,2 @@
+Doc huong dan tai:
+https://github.com/AccepptedProblems/SimpleOJ_Project

@@ -1,23 +1,19 @@
 
 class CookieManager{
-    constructor() {
-    }
-
     static getCookieWithName(name) {
-        var name = name + "=";
+        var cookiesName = name + "=";
         var cookies = document.cookie.split(';');
 
-        for(var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i];
-
+        for(let cookie in cookies) {
             //Remove whitespace before cookie string  
             while (cookie.charAt(0)==' ') {
                 cookie = cookie.substring(1);
             }
-            if (cookie.indexOf(name) == 0) {
-                return cookie.substring(name.length, cookie.length);
+            if (cookie.indexOf(cookiesName) == 0) {
+                return cookie.substring(cookiesName.length, cookie.length);
             }
         }
+    
         return "";
     }
 
@@ -29,7 +25,7 @@ class CookieManager{
         document.cookie = name + "=" + value + "; " + expires;
     }
 
-    static deletaCookie(name){
+    static deleteCookie(name){
         document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     }
 

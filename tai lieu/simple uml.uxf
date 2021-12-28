@@ -1,0 +1,23 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>370</x><y>400</y><w>210</w><h>150</h></coordinates><panel_attributes>User
+--
+id: Long="36548" (PK)
+username: String
+pasword: String
+fullname: String
+totalPoint: String
+isAdmin: Bool
+isActive: Bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>250</y><w>210</w><h>130</h></coordinates><panel_attributes>Problem
+--
+id: Long="36548" (PK)
+description: String  
+maxScore: Int = 100
+limitTime: Int 
+limitMemory: Int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>400</y><w>210</w><h>80</h></coordinates><panel_attributes>Submission
+--
+problemId: Int
+userId: Int 
+userScore: Int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>270</y><w>90</w><h>180</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>70;10;10;10;10;160;70;160</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>420</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>150</y><w>210</w><h>190</h></coordinates><panel_attributes>Contest 
+--
+contest_id: Long
+problems: [Problem]
+contest: [User]</panel_attributes><additional_attributes></additional_attributes></element></diagram>
