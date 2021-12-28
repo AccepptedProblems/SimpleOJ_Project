@@ -45,3 +45,8 @@ Chạy các câu lệnh sau để import database:
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
+### Cài đặt client 
+Cài các package của client:
+```
+npm install
+```
